@@ -8,7 +8,7 @@ public class Dealership {
         cust1.setAddress("Navi Mumbai");
         cust1.setCashOnHand(500000);
 
-        cust1.purchaseCar(vehicle, emp, false);
+        //cust1.purchaseCar(vehicle, emp, false);
     }
 
 }
