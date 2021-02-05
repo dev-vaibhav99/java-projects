@@ -3,19 +3,20 @@ package car_dealership;
 public class Employee {
 
     public void handleCustomer(Customer customer, boolean finance, Vehicle vehicle){
+        double loanAmount = vehicle.getPrice() - customer.getCashOnHand();
         if (finance){
-            double loanAmount = vehicle.getPrice() - customer.getCashOnHand();
             runCreditHistory(customer, loanAmount);
-        } else if (vehicle.getPrice() == customer.getCashOnHand()){
+        } else if (vehicle.getPrice() <= customer.getCashOnHand()){
             processTransaction(customer, vehicle);
         } else {
-            System.out.println("Customer will need more money to purchase vehicle: "+vehicle.getModel());
+            System.out.println("You need "+ loanAmount +" more money to purchase vehicle: "+vehicle);
         }
     }
 
     private void runCreditHistory(Customer customer, double loanAmount) {
-        System.out.println("Ran credit history for "+ customer.getName());
+        System.out.println("Ran credit history for "+ customer.getName()+"...");
         System.out.println("Customer has been approved to purchase the vehicle ! ");
+        System.out.println("You have to pay "+loanAmount+" as loan amount.");
     }
 
     private void processTransaction(Customer customer, Vehicle vehicle) {
